@@ -1,2 +1,2 @@
-export * from './navigationStyle';
+export * from './navConfig';
 export * from './init';

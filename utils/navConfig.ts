@@ -13,3 +13,9 @@ export const navigationStyle = {
     android: '#fff',
   }),
 };
+
+export const navConfig = {
+  defaultNavigationOptions: {
+    ...navigationStyle,
+  },
+};

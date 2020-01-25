@@ -1,7 +1,6 @@
-import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { navigationStyle } from '../utils';
+import { navConfig } from '../utils';
 
 import { CategoriesScreen, CategoryMealsScreen, MealDetailScreen } from '../screens';
 
@@ -20,12 +19,4 @@ const screens = {
   },
 };
 
-const config = {
-  defaultNavigationOptions: {
-    ...navigationStyle,
-  },
-};
-
-const MealsNavigator = createStackNavigator(screens, config);
-
-export default createAppContainer(MealsNavigator);
+export default createStackNavigator(screens, navConfig);

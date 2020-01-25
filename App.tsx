@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AppLoading } from 'expo';
 import { enableScreens } from 'react-native-screens';
 
-import MealsNavigator from './navigation/MealsNavigator';
+import AppContainer from './navigation';
 import { fetchFonts } from './utils';
 
 enableScreens();
@@ -13,5 +13,5 @@ export default function App() {
   if (!fontLoaded)
     return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />;
 
-  return <MealsNavigator />;
+  return <AppContainer />;
 }
