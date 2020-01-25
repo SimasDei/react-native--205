@@ -4,10 +4,10 @@ export class Meal {
   title: string;
   affordability: string;
   complexity: string;
-  imageUrl: string;
   duration: number;
+  imageUrl: string;
   ingredients: string[];
-  steps: number;
+  steps: string[];
   isGlutenFree: boolean;
   isVegan: boolean;
   isVegetarian: boolean;
@@ -33,8 +33,8 @@ export class Meal {
     this.title = title;
     this.affordability = affordability;
     this.complexity = complexity;
-    this.imageUrl = imageUrl;
     this.duration = duration;
+    this.imageUrl = imageUrl;
     this.ingredients = ingredients;
     this.steps = steps;
     this.isGlutenFree = isGlutenFree;
