@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react
 export const MealItem = ({ onMealSelect, meal }) => {
   return (
     <View style={styles.mealItem}>
-      <TouchableOpacity onPress={onMealSelect}>
+      <TouchableOpacity onPress={() => onMealSelect(meal.id)}>
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground source={{ uri: meal.imageUrl }} style={styles.mealImage}>
@@ -33,6 +33,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     borderRadius: 10,
     overflow: 'hidden',
+    marginVertical: 10,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
   },
   mealRow: {
     flexDirection: 'row',

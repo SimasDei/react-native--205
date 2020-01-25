@@ -9,11 +9,12 @@ import {
   Platform,
 } from 'react-native';
 
+const isCompatible = () => Platform.OS === 'android' && Platform.Version >= 21;
+
 export const CategoryGridTile = ({ item, navigationHandler }) => {
   let TouchableComponent = TouchableOpacity;
 
-  const { OS, Version } = Platform;
-  if (OS === 'android' && Version >= 21) TouchableComponent = TouchableNativeFeedback;
+  if (isCompatible) TouchableComponent = TouchableNativeFeedback;
 
   return (
     <View style={styles.gridItem}>
@@ -34,7 +35,8 @@ const styles = StyleSheet.create({
     margin: 16,
     height: 150,
     borderRadius: 10,
-    overflow: 'hidden',
+    overflow: isCompatible ? 'hidden' : 'visible',
+    elevation: 6,
   },
   gridItemTouch: {
     flex: 1,
@@ -47,7 +49,6 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.2,
     shadowRadius: 10,
-    elevation: 10,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
   }),

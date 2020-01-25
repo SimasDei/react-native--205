@@ -5,13 +5,19 @@ import { CATEGORIES, MEALS } from '../data';
 
 import { MealItem } from '../components/meals';
 
-export const CategoryMealsScreen = ({ navigation: { navigate, goBack, getParam } }) => {
+export const CategoryMealsScreen = ({ navigation: { navigate, getParam } }) => {
   const categoryId = getParam('categoryId');
-  const currentCategory = CATEGORIES.find(category => category.id === categoryId);
-
   const currentMeals = MEALS.filter(meal => meal.categoryIds.indexOf(categoryId) >= 0);
 
-  const onMealSelect = () => {};
+  const onMealSelect = mealId => {
+    const config = {
+      routeName: 'MealDetail',
+      params: {
+        mealId,
+      },
+    };
+    navigate(config);
+  };
 
   return (
     <View style={styles.screen}>
@@ -24,13 +30,12 @@ export const CategoryMealsScreen = ({ navigation: { navigate, goBack, getParam }
   );
 };
 
-CategoryMealsScreen.navigationOptions = navigationData => {
-  const { getParam } = navigationData.navigation;
+CategoryMealsScreen.navigationOptions = ({ navigation: { getParam } }) => {
   const categoryId = getParam('categoryId');
-  const currentCategory = CATEGORIES.find(category => category.id === categoryId);
+  const { title } = CATEGORIES.find(category => category.id === categoryId);
 
   return {
-    headerTitle: currentCategory.title,
+    headerTitle: title,
   };
 };
 
