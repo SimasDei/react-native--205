@@ -1,12 +1,25 @@
+// @ts-nocheck
+
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 
 import { CATEGORIES } from '../data';
 
 export const CategoriesScreen = ({ navigation: { navigate } }) => {
+  const navigationHandler = (categoryId: string) => {
+    const config = {
+      routeName: 'CategoryMeals',
+      params: {
+        categoryId,
+      },
+    };
+
+    navigate(config);
+  };
+
   const renderGridItem = ({ item }) => {
     return (
-      <TouchableOpacity style={styles.gridItem} onPress={() => navigate('CategoryMeals')}>
+      <TouchableOpacity style={styles.gridItem} onPress={() => navigationHandler(item.id)}>
         <View>
           <Text>{item.title}</Text>
         </View>
