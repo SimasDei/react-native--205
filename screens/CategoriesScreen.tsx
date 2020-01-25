@@ -1,9 +1,9 @@
-// @ts-nocheck
-
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 
 import { CATEGORIES } from '../data';
+
+import { CategoryGridTile } from '../components/categories';
 
 export const CategoriesScreen = ({ navigation: { navigate } }) => {
   const navigationHandler = (categoryId: string) => {
@@ -17,17 +17,15 @@ export const CategoriesScreen = ({ navigation: { navigate } }) => {
     navigate(config);
   };
 
-  const renderGridItem = ({ item }) => {
-    return (
-      <TouchableOpacity style={styles.gridItem} onPress={() => navigationHandler(item.id)}>
-        <View>
-          <Text>{item.title}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
-  return <FlatList numColumns={2} data={CATEGORIES} renderItem={renderGridItem} />;
+  return (
+    <FlatList
+      numColumns={2}
+      data={CATEGORIES}
+      renderItem={({ item }) => (
+        <CategoryGridTile item={item} navigationHandler={navigationHandler} />
+      )}
+    />
+  );
 };
 
 const styles = StyleSheet.create({
