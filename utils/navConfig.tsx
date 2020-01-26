@@ -40,3 +40,12 @@ export const favTabConfig = {
   shifting: true,
   tabBarColor: colors.primaryColor,
 };
+
+export const drawerOptions = {
+  contentOptions: {
+    activeTintColor: colors.primaryColor,
+    labelStyle: {
+      fontFamily: 'open-sans-bold',
+    },
+  },
+};
