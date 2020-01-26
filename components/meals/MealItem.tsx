@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 
+import { DefaultText } from '../ui';
+
 export const MealItem = ({ onMealSelect, meal }) => {
   return (
     <View style={styles.mealItem}>
@@ -9,9 +11,9 @@ export const MealItem = ({ onMealSelect, meal }) => {
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground source={{ uri: meal.imageUrl }} style={styles.mealImage}>
               <View style={styles.mealTitleContainer}>
-                <Text numberOfLines={1} style={styles.mealTitle}>
+                <DefaultText numberOfLines={1} style={styles.mealTitle}>
                   {meal.title}
-                </Text>
+                </DefaultText>
               </View>
             </ImageBackground>
           </View>

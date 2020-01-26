@@ -11,6 +11,9 @@ export const navigationStyle = {
       android: colors.primaryColor,
     }),
   },
+  headerTitleStyle: {
+    fontFamily: 'open-sans-bold',
+  },
   headerTintColor: Platform.select({
     ios: colors.primaryColor,
     android: '#fff',
@@ -25,6 +28,9 @@ export const navConfig = {
 
 export const tabConfig = {
   tabBarOptions: {
+    labelStyle: {
+      fontFamily: 'open-sans',
+    },
     activeTintColor: colors.accentColor,
   },
 };
