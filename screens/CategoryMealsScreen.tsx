@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import { CATEGORIES, MEALS } from '../data';
 
-import { MealItem } from '../components/meals';
+import { MealList } from '../components/meals';
 
 export const CategoryMealsScreen = ({ navigation: { navigate, getParam } }) => {
   const categoryId = getParam('categoryId');
@@ -21,11 +21,7 @@ export const CategoryMealsScreen = ({ navigation: { navigate, getParam } }) => {
 
   return (
     <View style={styles.screen}>
-      <FlatList
-        style={styles.mealList}
-        data={currentMeals}
-        renderItem={({ item }) => <MealItem meal={item} onMealSelect={onMealSelect} />}
-      />
+      <MealList onMealSelect={onMealSelect} currentMeals={currentMeals} />
     </View>
   );
 };
@@ -44,10 +40,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
-  },
-  mealList: {
-    width: '100%',
   },
 });
 export default CategoryMealsScreen;

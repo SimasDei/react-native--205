@@ -32,7 +32,7 @@ export const tabConfig = {
 export const mealTabConfig = {
   tabBarIcon: tabInfo => <Ionicons name={'ios-restaurant'} color={tabInfo.tintColor} size={25} />,
   shifting: true,
-  tabBarColor: colors.accentColor,
+  tabBarColor: colors.primaryColorDark,
 };
 
 export const favTabConfig = {

@@ -1,6 +1,7 @@
 export const colors = {
-  primaryColor: '#4a148c',
-  accentColor: '#ff6f00',
+  primaryColor: '#ff80ab',
+  primaryColorDark: '#c94f7c',
+  accentColor: '#263238',
 };
 
 export default colors;
