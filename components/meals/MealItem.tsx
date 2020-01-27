@@ -6,7 +6,7 @@ import { DefaultText } from '../ui';
 export const MealItem = ({ onMealSelect, meal }) => {
   return (
     <View style={styles.mealItem}>
-      <TouchableOpacity onPress={() => onMealSelect(meal.id)}>
+      <TouchableOpacity onPress={() => onMealSelect(meal)}>
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground source={{ uri: meal.imageUrl }} style={styles.mealImage}>

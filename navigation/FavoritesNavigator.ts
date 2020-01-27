@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
 import { navConfig } from '../utils';
-import { FavoritesScreen } from '../screens';
+import { FavoritesScreen, MealDetailScreen } from '../screens';
 
 const screens = {
   Favorite: {
@@ -9,6 +9,9 @@ const screens = {
     navigationOptions: {
       headerTitle: 'Favorites',
     },
+  },
+  MealDetail: {
+    screen: MealDetailScreen,
   },
 };
 
