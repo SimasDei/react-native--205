@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { AppLoading } from 'expo';
 import { enableScreens } from 'react-native-screens';
+import { Provider } from 'react-redux';
+
+import { fetchFonts } from './utils';
+import { store } from './state';
 
 import AppContainer from './navigation';
-import { fetchFonts } from './utils';
 
 enableScreens();
 
@@ -13,5 +16,9 @@ export default function App() {
   if (!fontLoaded)
     return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />;
 
-  return <AppContainer />;
+  return (
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  );
 }
