@@ -1,19 +1,28 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 
-import { CATEGORIES, MEALS } from '../data';
+import { CATEGORIES } from '../data';
 
 import { MealList } from '../components/meals';
 
+interface IState {
+  meals: {
+    filteredMeals: any[];
+  };
+}
+
 export const CategoryMealsScreen = ({ navigation: { navigate, getParam } }) => {
   const categoryId = getParam('categoryId');
-  const currentMeals = MEALS.filter(meal => meal.categoryIds.indexOf(categoryId) >= 0);
+  const availableMeals = useSelector((state: IState) => state.meals.filteredMeals);
+  const currentMeals = availableMeals.filter(meal => meal.categoryIds.indexOf(categoryId) >= 0);
 
-  const onMealSelect = mealId => {
+  const onMealSelect = ({ id, title }) => {
     const config = {
       routeName: 'MealDetail',
       params: {
-        mealId,
+        mealId: id,
+        title,
       },
     };
     navigate(config);

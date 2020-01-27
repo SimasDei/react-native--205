@@ -1,20 +1,22 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { useSelector } from 'react-redux';
 
-import { MEALS } from '../data';
+import { IMeals } from '../types';
 
 import { MealList } from '../components/meals';
 import { CustomHeaderButton } from '../components/ui';
 
 export const FavoritesScreen = ({ navigation: { navigate, getParam } }) => {
-  const currentMeals = MEALS.filter((_, index) => index < 2);
+  const favoriteMeals = useSelector((state: IMeals) => state.meals.favoriteMeals);
 
-  const onMealSelect = mealId => {
+  const onMealSelect = ({ id, title }) => {
     const config = {
       routeName: 'MealDetail',
       params: {
-        mealId,
+        mealId: id,
+        title,
       },
     };
     navigate(config);
@@ -22,7 +24,7 @@ export const FavoritesScreen = ({ navigation: { navigate, getParam } }) => {
 
   return (
     <View style={styles.screen}>
-      <MealList onMealSelect={onMealSelect} currentMeals={currentMeals} />
+      <MealList onMealSelect={onMealSelect} currentMeals={favoriteMeals} />
     </View>
   );
 };
