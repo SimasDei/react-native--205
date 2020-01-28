@@ -4,7 +4,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { IMeals } from '../types';
-import { toggleFavorite } from '../state/actions';
+import { MTypes } from '../state/types';
 
 import { CustomHeaderButton } from '../components/ui';
 import { DefaultText } from '../components/ui';
@@ -28,7 +28,7 @@ export const MealDetailScreen = ({ navigation: { getParam, setParams } }) => {
   const currentMeal = getCurrentMeal(getParam);
 
   const togleFavoriteHandler = useCallback(() => {
-    dispatch(toggleFavorite(currentMeal.id));
+    dispatch({ type: MTypes.TOGGLE_FAVORITE, id: currentMeal.id });
   }, [dispatch, currentMeal]);
 
   useEffect(() => {

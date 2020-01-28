@@ -8,7 +8,7 @@ import { IMeals } from '../types';
 import { MealList } from '../components/meals';
 import { CustomHeaderButton } from '../components/ui';
 
-export const FavoritesScreen = ({ navigation: { navigate, getParam } }) => {
+export const FavoritesScreen = ({ navigation: { navigate } }) => {
   const favoriteMeals = useSelector((state: IMeals) => state.meals.favoriteMeals);
 
   const onMealSelect = ({ id, title }) => {
