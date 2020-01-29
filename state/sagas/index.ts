@@ -1,4 +1,4 @@
-import { takeLatest, call, takeEvery } from 'redux-saga/effects';
+import { takeLatest, call } from 'redux-saga/effects';
 
 import { mealsSagas } from './mealsSagas';
 import { MTypes } from '../types';
@@ -9,5 +9,4 @@ export function* watchToggleFavorite() {
 
 export default function* rootSaga() {
   yield call(watchToggleFavorite);
-  // yield takeEvery(MTypes.TOGGLE_FAVORITE_ASYNC, mealsSagas.toggleFavSaga);
 }
