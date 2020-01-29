@@ -1,7 +1,6 @@
 import { put } from 'redux-saga/effects';
 
 import { mealActions } from '../actions';
-import { MTypes } from '../types';
 
 const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
