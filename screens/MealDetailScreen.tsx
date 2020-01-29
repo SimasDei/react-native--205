@@ -28,7 +28,7 @@ export const MealDetailScreen = ({ navigation: { getParam, setParams } }) => {
   const currentMeal = getCurrentMeal(getParam);
 
   const togleFavoriteHandler = useCallback(() => {
-    dispatch({ type: MTypes.TOGGLE_FAVORITE, id: currentMeal.id });
+    dispatch({ type: MTypes.TOGGLE_FAVORITE_ASYNC, id: currentMeal.id });
   }, [dispatch, currentMeal]);
 
   useEffect(() => {

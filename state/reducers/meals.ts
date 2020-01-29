@@ -10,7 +10,6 @@ const initialState = {
 export const mealsReducer = (state = initialState, action) => {
   switch (action.type) {
     case MTypes.TOGGLE_FAVORITE:
-    case MTypes.TOGGLE_FAVORITE_ASYNC:
       const isFavorite = state.favoriteMeals.findIndex(item => item.id === action.id);
       if (isFavorite >= 0) {
         const favoriteMeals = [...state.favoriteMeals];
