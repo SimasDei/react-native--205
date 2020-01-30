@@ -1,0 +1,6 @@
+export const SET_FILTERS = 'SET_FILTERS';
+
+export const FTypes = {
+  SET_FILTERS: 'SET_FILTERS',
+  SET_FILTERS_ASYNC: 'SET_FILTERS_ASYNC',
+};

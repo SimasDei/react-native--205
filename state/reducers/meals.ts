@@ -1,5 +1,5 @@
 import { MEALS } from '../../data';
-import { MTypes } from '../types';
+import { MTypes, FTypes } from '../types';
 
 const initialState = {
   meals: MEALS,
@@ -25,6 +25,20 @@ export const mealsReducer = (state = initialState, action) => {
           favoriteMeals: state.favoriteMeals.concat(mealToAdd),
         };
       }
+    case FTypes.SET_FILTERS:
+      const appliedFilters = action.filters;
+      const filteredMeals = state.meals.filter(meal => {
+        if (appliedFilters.glutenFree && !meal.isGlutenFree) return false;
+        if (appliedFilters.lactoseFree && !meal.isLactoseFree) return false;
+        if (appliedFilters.vegetarian && !meal.isVegetarian) return false;
+        if (appliedFilters.vegan && !meal.isVegan) return false;
+        return meal;
+      });
+
+      return {
+        ...state,
+        filteredMeals,
+      };
     default:
       return state;
   }
