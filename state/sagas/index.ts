@@ -12,8 +12,5 @@ export function* watchSetFilters() {
 }
 
 export default function* rootSaga() {
-  // yield call(watchToggleFavorite);
-  // yield call(watchSetFilters);
-
   yield all([call(watchToggleFavorite), call(watchSetFilters)]);
 }

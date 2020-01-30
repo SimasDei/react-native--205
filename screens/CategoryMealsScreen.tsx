@@ -6,6 +6,7 @@ import { CATEGORIES } from '../data';
 import { IMeals } from '../types';
 
 import { MealList } from '../components/meals';
+import { DefaultText } from '../components/ui';
 
 export const CategoryMealsScreen = ({ navigation: { navigate, getParam } }) => {
   const categoryId = getParam('categoryId');
@@ -24,6 +25,13 @@ export const CategoryMealsScreen = ({ navigation: { navigate, getParam } }) => {
     };
     navigate(config);
   };
+
+  if (!currentMeals.length)
+    return (
+      <View style={styles.notFound}>
+        <DefaultText>No meals found 🍽 toggle filters ⚙</DefaultText>
+      </View>
+    );
 
   return (
     <View style={styles.screen}>
@@ -46,6 +54,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  notFound: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 export default CategoryMealsScreen;

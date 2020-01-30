@@ -10,7 +10,6 @@ export function* toggleFavSaga(action) {
 }
 
 export function* setFilters(action) {
-  console.log('hi', action);
   yield put(filterActions.setFilters(action.filters));
 }
 
