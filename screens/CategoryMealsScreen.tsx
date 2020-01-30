@@ -3,18 +3,14 @@ import { View, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { CATEGORIES } from '../data';
+import { IMeals } from '../types';
 
 import { MealList } from '../components/meals';
 
-interface IState {
-  meals: {
-    filteredMeals: any[];
-  };
-}
-
 export const CategoryMealsScreen = ({ navigation: { navigate, getParam } }) => {
   const categoryId = getParam('categoryId');
-  const availableMeals = useSelector((state: IState) => state.meals.filteredMeals);
+  const availableMeals = useSelector((state: IMeals) => state.meals.filteredMeals);
+  const favoriteMeals = useSelector((state: IMeals) => state.meals.favoriteMeals);
   const currentMeals = availableMeals.filter(meal => meal.categoryIds.indexOf(categoryId) >= 0);
 
   const onMealSelect = ({ id, title }) => {
@@ -23,6 +19,7 @@ export const CategoryMealsScreen = ({ navigation: { navigate, getParam } }) => {
       params: {
         mealId: id,
         title,
+        isFavorite: favoriteMeals.some(meal => meal.id === id),
       },
     };
     navigate(config);
